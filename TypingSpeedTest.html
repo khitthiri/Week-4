@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Test</title>
+</head>
+<body>
+    <textarea id="typingArea" placeholder="Start typing..."></textarea>
+    <p>Time: <span id="timeLeft">30</span>s | Words: <span id="wordCount">0</span></p>
+
+    <script>
+        let time = 30, started = false, interval;
+        document.getElementById("typingArea").oninput = function () {
+            if (!started) {
+                started = true;
+                interval = setInterval(() => {
+                    if (time > 0) {
+                        time--;
+                        document.getElementById("timeLeft").textContent = time;
+                    } else {
+                        clearInterval(interval);
+                        document.getElementById("wordCount").textContent = this.value.trim().split(/\s+/).length;
+                    }
+                }, 1000);
+            }
+        };
+    </script>
+</body>
+</html>
