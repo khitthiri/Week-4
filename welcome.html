@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Welcome Message</title>
+</head>
+<body>
+    <div id="welcome-message"></div>
+
+    <script>
+        function setWelcomeMessage() {
+            const now = new Date();
+            const hours = now.getHours();
+            let message = "Welcome to My Portfolio!";
+            
+            if (hours < 12) {
+                message = "Good morning! Welcome to My Portfolio!";
+            } else if (hours < 18) {
+                message = "Good afternoon! Welcome to My Portfolio!";
+            } else {
+                message = "Good evening! Welcome to My Portfolio!";
+            }
+
+            document.getElementById("welcome-message").innerText = message;
+        }
+
+        window.onload = setWelcomeMessage;
+    </script>
+</body>
+</html>

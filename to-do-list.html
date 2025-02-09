@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+</head>
+<body>
+    <input id="taskInput" type="text" placeholder="New task">
+    <button id="addTask">Add</button>
+    <ul id="taskList"></ul>
+
+    <script>
+        document.getElementById("addTask").onclick = function () {
+            let taskText = document.getElementById("taskInput").value.trim();
+            if (!taskText) return;
+
+            let li = document.createElement("li");
+            li.innerHTML = `${taskText} <button class="done">Done</button> <button class="remove">X</button>`;
+            
+            document.getElementById("taskList").appendChild(li);
+            document.getElementById("taskInput").value = "";
+
+            li.querySelector(".remove").onclick = function () { li.remove(); };
+            li.querySelector(".done").onclick = function () { li.style.textDecoration = "line-through"; };
+        };
+    </script>
+</body>
+</html>
