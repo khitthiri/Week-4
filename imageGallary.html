@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <style>
+        .gallery img { width: 100px; cursor: pointer; }
+        .lightbox { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8); display: none; justify-content: center; align-items: center;
+        }
+        .lightbox img { width: 50%; }
+    </style>
+</head>
+<body>
+    <div class="gallery">
+        <img src="./Images/Khit.jpg" alt="Image 1">
+        <img src="./Images/Cat.PNG" alt="Image 2">
+    </div>
+    <div class="lightbox" id="lightbox">
+        <img id="lightbox-img">
+        <button id="close">Close</button>
+    </div>
+
+    <script>
+        document.querySelectorAll(".gallery img").forEach(img => {
+            img.onclick = function () {
+                document.getElementById("lightbox-img").src = this.src;
+                document.getElementById("lightbox").style.display = "flex";
+            };
+        });
+
+        document.getElementById("close").onclick = function () {
+            document.getElementById("lightbox").style.display = "none";
+        };
+    </script>
+</body>
+</html>
